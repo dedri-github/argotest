@@ -12,6 +12,6 @@ spec:
       - name: check-gatekeeper
         image: busybox
         command:
-          - "false"
+          - "true"
       restartPolicy: Never
   backoffLimit: 0
