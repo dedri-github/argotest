@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: gatekeeper
+  namespace: gatekeeper-system
+spec:
+  project: default
+  source:
+    chart: gatekeeper
+    repoURL: https://open-policy-agent.github.io/gatekeeper/charts
+    targetRevision: 3.8.1
+    helm:
+      releaseName: gatekeeper-release
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: gatekeeper-system
