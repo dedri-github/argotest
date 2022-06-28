@@ -4,6 +4,8 @@ metadata:
   name: gatekeeper-helm
 spec:
   project: default
+  syncPolicy:
+    automated: {}
   source:
     chart: gatekeeper
     repoURL: https://open-policy-agent.github.io/gatekeeper/charts
