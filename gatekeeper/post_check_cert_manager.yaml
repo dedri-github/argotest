@@ -1,16 +1,16 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: check-gatekeeper-
+  generateName: check-cert-manager-
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
   template:
     spec:
       containers:
-      - name: check-gatekeeper
+      - name: check-cert-manager
         image: busybox
         command:
           - "true"

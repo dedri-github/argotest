@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-helm
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  project: default
+  syncPolicy:
+    automated: {}
+    syncOptions:
+    - CreateNamespace=true
+  source:
+    chart: cert-manager
+    repoURL: https://charts.jetstack.io
+    targetRevision: v1.8.0
+    helm:
+      releaseName: cert-manager-release
+      values: |
+        installCRDs=true
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: cert-manager-system
